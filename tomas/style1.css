@@ -1,0 +1,46 @@
+
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+scroll-behavior: smooth;
+}
+.intro{
+background-image: url(5435910.jpg); 
+background-size: cover; 
+background-position: center; 
+background-repeat: no-repeat;
+background-attachment: fixed;
+height: 100vh;
+
+
+}
+.navbar-nav {
+margin-left: auto; 
+}
+.intro ul li:hover{
+background-color:  orange;
+padding: 2px;
+transition: 0.6s;
+}
+
+.icons1 a i:hover{
+background-color:  orange;
+transition: 0.6s;
+}
+.icons2 a i:hover{
+background-color:black;
+transition: 0.6s;
+}
+.icons3 a i:hover{
+background-color:white;
+transition: 0.6s;
+}
+
+@media screen and (max-width:1000px){
+.About p,h2,.button{
+text-align: center;
+}
+
+}
