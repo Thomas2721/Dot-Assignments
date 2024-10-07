@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Area Calculator</title>
+
+    <style>
+        .input-container {
+            display: flex;
+            align-items: center; /* Vertically align content */
+            gap: 10px; /* Space between elements */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function divide() {
+            var result = document.getElementById("result1");
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            result.innerHTML = Number(num1) / Number(num2);
+        }
+    </script>
+    <script>
+        function multiply() {
+            var result = document.getElementById("result2");
+            var num3 = document.getElementById("num3").value;
+            var num4 = document.getElementById("num4").value;
+            result.innerHTML = Number(num3) * Number(num4);
+        }
+    </script>
+   
+
+
+
+    <h1>Area of the Triangle</h1>
+    <p id="area"></p>
+    <button onclick="displayArea()">Calculate Area</button>
+
+    <script>
+        function Area(a, b, c) {
+            var s = (a + b + c) / 2;
+            var area = Math.sqrt((s * (s - a) * (s - b) * (s - c)));
+            return area;
+        }
+
+        function displayArea() {
+            var A = 5;
+            var B = 6;
+            var C = 7;
+            const result = Area(A, B, C);
+            document.getElementById('area').innerText = "Area: " + result;
+        }
+    </script>
+
+
+
+
+    <form>
+        <input type="text" id="num1">
+        <input type="text" id="num2">
+        <button type="button" onclick="divide()">devide</button>
+        <p id="result1"></p>
+    </form>
+    <form>
+        <input type="text" id="num3">
+        <input type="text" id="num4">
+        <button type="button" onclick="multiply()">Multiply</button>
+        <p id="result2"></p>
+    </form>
+
+
+
+
+    <h1>Add "JavaScript"</h1>
+
+    <h4 style="display: inline;">JavaScript is </h4>
+    <input type="text" id="userInput" placeholder="Enter text" style="display: inline;">
+    <button type="button" onclick="displayPrefix()" style="display: inline;">Add word</button>
+
+    <p id="javascript-result" style="display: inline;"></p>
+
+    <script>
+        function addJavaScriptPrefix(str) {
+            return "JavaScript" + " " + "is" + " " + str;
+        }
+
+        function displayPrefix() {
+            let inputString = document.getElementById('userInput').value;
+
+            let result = addJavaScriptPrefix(inputString);
+            document.getElementById('javascript-result').innerText = result;
+        }
+    </script>
+
+
+</body>
+
+</html>
