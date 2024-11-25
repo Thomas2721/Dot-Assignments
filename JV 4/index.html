@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .box {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h4 {
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        .box p {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .box input[type="text"] {
+            width: 80%;
+            padding: 5px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .box button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #5bc0de;
+            color: white;
+            cursor: pointer;
+        }
+
+        .box button:hover {
+            background-color: #31b0d5;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+        }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+        }
+
+        #outCome, #outCome2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h4>Question 1</h4>
+            <p>Check whether a year is a leap year or not</p>
+            <input type="text" id="inpt" placeholder="Enter Year">
+            <input type="text" id="result" placeholder="Result" readonly>
+            <button onclick="checkLeapYear()">Check</button>
+        </div>
+
+        <div class="box">
+            <h4>Question 4</h4>
+            <p>Check whether a word is a palindrome or not</p>
+            <input type="text" id="inpt2" placeholder="Enter a word">
+            <input type="text" id="result2" placeholder="Result" readonly>
+            <button class="btn-danger" onclick="toGetPalindromeWord()">Check</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box" style="height: 350px;">
+            <h4>Question 2</h4>
+            <p>Find out if 1st January will be a Sunday between 2014 and 2050.</p>
+            <p id="outCome"></p>
+        </div>
+
+        <div class="box">
+            <h4>Question 3</h4>
+            <p>Iterate from 0 to 15, checking if numbers are odd or even.</p>
+            <p id="outCome2"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkLeapYear() {
+            let year = parseInt(document.getElementById('inpt').value);
+
+            if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+                document.getElementById('result').value = 'LEAP YEAR!!';
+            } else {
+                document.getElementById('result').value = 'NOT A LEAP YEAR!!';
+            }
+        }
+
+        function toGetPalindromeWord() {
+            let userInput = document.getElementById('inpt2').value;
+            let yourInput = userInput.toLowerCase().replace(/[^a-z0-9]/g, '');
+            let reversedVersion = yourInput.split('').reverse().join('');
+
+            document.getElementById('result2').value = reversedVersion === yourInput ? 'True' : 'False';
+        }
+
+        // Question 2
+        let outPut = '';
+        function findSundaysOnJan1() {
+            for (let year = 2014; year <= 2050; year++) {
+                let date = new Date(year, 0, 1);
+                if (date.getDay() === 0) {
+                    outPut += `1st January ${year} is a Sunday.<br>`;
+                }
+            }
+            document.getElementById('outCome').innerHTML = outPut;
+        }
+        findSundaysOnJan1();
+
+        // Question 3
+        let outCome = '';
+        for (let i = 0; i <= 15; i++) {
+            if (i % 2 === 0) {
+                outCome += `${i} is Even.<br>`;
+            } else {
+                outCome += `${i} is Odd.<br>`;
+            }
+        }
+        document.getElementById('outCome2').innerHTML = outCome;
+    </script>
+</body>
+</html>
